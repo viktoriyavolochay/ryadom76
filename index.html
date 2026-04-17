@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя таблица</title>
+    <style>
+        body { margin: 0; padding: 0; }
+        iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+    <!-- Подключаем библиотеку VK Bridge -->
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+</head>
+<body>
+    <!-- ВСТАВЬТЕ ВАШУ ССЫЛКУ НА ТАБЛИЦУ НИЖЕ -->
+    <iframe src="https://board.vk.com/?uid=fc6f5fd7-7d79-44b3-9207-b6cb0acaef56"></iframe>
+
+    <script>
+        // Дожидаемся загрузки страницы
+        window.addEventListener('load', function() {
+            // Отправляем сигнал инициализации в VK
+            // Это самая важная команда, без неё приложение не работает! [citation:2][citation:5]
+            vkBridge.send('VKWebAppInit')
+                .then(() => {
+                    console.log('Приложение успешно инициализировано');
+                })
+                .catch(error => {
+                    console.error('Ошибка инициализации:', error);
+                });
+        });
+    </script>
+</body>
+</html>
